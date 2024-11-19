@@ -1,35 +1,77 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JobLessMarketplace</title>
-    <link rel="stylesheet" href="style/style.css">
-
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="light-mode">
-    <header></header>
-    <main>
-        <h2>Jobilese</h2>
-        <p>Jobilese is a platform where companies can post job listings and users can apply for jobs.
-            <br>This is the place where you'll stop being unemployed and broke with no bitches.</br>
-        </p>
-        <img src="_c081b4de-552f-40b0-a256-24c70139f233.png" alt="Logo" width="300" height="300">
-    </main>
-    <aside>
-        <h2>Tips for a Successful Job Search</h2>
-        <ul>
-            <li>Customize your CV for each specific job offer.</li>
-            <li>Research the company before the job interview.</li>
-            <li>Use keywords that match the job description.</li>
-            <li>Don’t miss opportunities with our job alert system!</li>
-        </ul>
-        <p>Sign up to receive the latest job offers directly to your inbox.</p>
-    </aside>
-      <footer>
-        <p>Made by Emins Nasirovs</p>
-      </footer>
-      <script src="script.js"></script>
+<body>
+    <form action="" class="calculator" name="calc">
+        <!-- Update the name to "txt" here -->
+        <input type="text" name="txt" class="inputArea" readonly>
+
+        <!-- Buttons -->
+        <span onclick="document.calc.txt.value += '1';">1</span>
+        <span onclick="document.calc.txt.value += '2';">2</span>
+        <span onclick="document.calc.txt.value += '3';">3</span>
+        <span class="clear" onclick="document.calc.txt.value = '';">C</span>
+        <span onclick="document.calc.txt.value += '4';">4</span>
+        <span onclick="document.calc.txt.value += '5';">5</span>
+        <span onclick="document.calc.txt.value += '6';">6</span>
+        <span class="operations plus" onclick="document.calc.txt.value += '+';">+</span>
+        <span onclick="document.calc.txt.value += '7';">7</span>
+        <span onclick="document.calc.txt.value += '8';">8</span>
+        <span onclick="document.calc.txt.value += '9';">9</span>
+        <span onclick="document.calc.txt.value += '0';">0</span>
+        <span onclick="document.calc.txt.value += '.';">.</span>
+        <span onclick="document.calc.txt.value = backspace(document.calc.txt.value);">B</span>
+        <span class="operations" onclick="document.calc.txt.value += '-';">-</span>
+        <span class="equal" onclick="document.calc.txt.value = calculattion(document.calc.txt.value);">=</span>
+        <span class="operations" onclick="document.calc.txt.value += '*';">*</span>
+        <span class="operations" onclick="document.calc.txt.value += '/';">/</span>
+    </form>
+    <div id="history">
+        <h2>History</h2>
+    </div>
+    <script>
+        let history = document.getElementById('history');
+
+        // Calculation function
+        function calculation(v) {
+            try {
+                
+                let result = eval(v);
+            
+                let para = document.createElement('p');
+                
+                para.innerText = `${v} = ${result}`;
+                
+                history.appendChild(para);
+                
+                return result;
+            } catch (e) {
+                alert('Invalid Expression');
+                return '';
+            }
+        }
+        function backspace(b) {
+            return b.slice(0, b.length - 1);
+        }
+        document.addEventListener('keydown', function (event) {
+            const inputField = document.calc.txt;
+            const validKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '+', '-', '*', '/', 'Enter', 'Backspace'];
+
+            if (validKeys.includes(event.key)) {
+                if (event.key === 'Enter') {
+                    inputField.value = calculation(inputField.value);
+                } else if (event.key === 'Backspace') {
+                    inputField.value = backspace(inputField.value);
+                } else {
+                    inputField.value += event.key;
+                }
+            }
+        });
+    </script>
 </body>
 </html>
