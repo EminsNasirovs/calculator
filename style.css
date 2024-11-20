@@ -7,12 +7,12 @@
 
 body {
     display: flex;
-    justify-content: center; /* Centers content horizontally */
-    align-items: center; /* Centers content vertically */
-    min-height: 100vh; /* Ensures the body takes up the full height of the viewport */
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
     background: #182c61;
-    flex-direction: row; /* Aligns elements side by side (calculator and history) */
-    gap: 20px; /* Adds space between calculator and history */
+    flex-direction: row;
+    gap: 20px; 
 }
 
 .calculator {
@@ -20,8 +20,8 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
-    justify-items: center; /* Centers items horizontally within the grid */
-    align-items: center; /* Centers items vertically within the grid */
+    justify-items: center; 
+    align-items: center; 
 }
 
 .calculator span {
@@ -61,7 +61,7 @@ body {
     outline: none;
     border: none;
     font-size: 1.3em;
-    text-align: center; /* Centers the input text */
+    text-align: center; 
 }
 
 .calculator .plus {
